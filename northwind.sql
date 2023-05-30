@@ -541,6 +541,20 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
+DROP PROCEDURE IF EXISTS `Ten Most Expensive Products`;
+DELIMITER $$
+CREATE PROCEDURE `Ten Most Expensive Products`()
+BEGIN
+   SELECT 
+      product_name AS TenMostExpensiveProducts,
+      list_price
+   FROM products
+   ORDER BY list_price DESC
+   LIMIT 10;
+END $$
+DELIMITER ;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
